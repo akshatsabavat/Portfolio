@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 
 import Particles from "@/components/magicui/particles";
@@ -58,7 +58,7 @@ const HeroSection = () => {
               md: "xl",
             }}
             fontWeight="normal"
-            className="max-w-[500px] mx-auto"
+            className="max-w-[400px] mx-auto"
           />
           <div className="mt-3 flex gap-3 max-w-[500px] mx-auto justify-center items-center flex-gap-2">
             <Button>Contact me</Button>
