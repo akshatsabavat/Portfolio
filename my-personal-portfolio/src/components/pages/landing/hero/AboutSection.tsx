@@ -1,19 +1,19 @@
-import React from "react";
+import Image, { StaticImageData } from "next/image";
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
 import { BellIcon, Share2Icon } from "lucide-react";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
-import Marquee from "@/components/magicui/marquee";
 import {
   MarqueeCocurricularBento,
   MarqueeTestimonialBento,
 } from "../../../custom/Marquees";
 
+import React from "react";
+import Marquee from "@/components/magicui/marquee";
 import ContentfulIcon from "@/app/images/toolIcons/contentful.svg";
 import PrismaIcon from "@/app/images/toolIcons/prisma.svg";
 import TypescriptIcon from "@/app/images/toolIcons/typescript-icon.svg";
 import SupabaseIcon from "@/app/images/toolIcons/supabase-icon.svg";
 import PostgreSqlIcon from "@/app/images/toolIcons/postgresql.svg";
-import Image, { StaticImageData } from "next/image";
 
 const toolIcons = [
   { Icon: ContentfulIcon, name: "Contentful" },
