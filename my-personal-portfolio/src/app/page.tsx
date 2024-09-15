@@ -1,8 +1,8 @@
 import HeroSection from "@/components/pages/landing/hero/HeroSectionTextDisplay";
 import NavigationDock from "@/components/custom/NavigationDock";
 import VelocityTextSection from "@/components/pages/landing/hero/VelocityTextSection";
-import AboutSection from "@/components/pages/landing/hero/AboutSection";
-import ExperienceSection from "@/components/pages/landing/hero/ExperienceSection";
+import AboutSection from "@/components/pages/landing/info/AboutSection";
+import ExperienceSection from "@/components/pages/landing/info/ExperienceSection";
 
 const Home = () => {
   return (
