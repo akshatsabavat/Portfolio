@@ -2,6 +2,7 @@ import HeroSection from "@/components/pages/landing/hero/HeroSectionTextDisplay"
 import NavigationDock from "@/components/custom/NavigationDock";
 import VelocityTextSection from "@/components/pages/landing/hero/VelocityTextSection";
 import AboutSection from "@/components/pages/landing/hero/AboutSection";
+import ExperienceSection from "@/components/pages/landing/hero/ExperienceSection";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
         <NavigationDock />
       </div>
       <HeroSection />
+      <ExperienceSection />
       <AboutSection />
       <VelocityTextSection />
     </div>
