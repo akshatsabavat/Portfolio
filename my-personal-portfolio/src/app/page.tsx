@@ -1,6 +1,7 @@
 import HeroSection from "@/components/pages/landing/hero/HeroSectionTextDisplay";
 import NavigationDock from "@/components/custom/NavigationDock";
 import VelocityTextSection from "@/components/pages/landing/hero/VelocityTextSection";
+import AboutSection from "@/components/pages/landing/hero/AboutSection";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <NavigationDock />
       </div>
       <HeroSection />
+      <AboutSection />
       <VelocityTextSection />
     </div>
   );

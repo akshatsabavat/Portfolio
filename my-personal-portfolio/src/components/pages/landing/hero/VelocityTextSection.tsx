@@ -2,7 +2,7 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 const VelocityTextSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary">
+    <section className="py-20 ">
       <VelocityScroll
         text="Develop Launch Scale"
         default_velocity={5}
