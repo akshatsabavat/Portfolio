@@ -4,12 +4,12 @@ import BlurFade from "@/components/magicui/blur-fade";
 const DATA = {
   projects: [
     {
-      title: "Chat Collect",
+      title: "Explorance",
       href: "https://chatcollect.com",
       dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "A Tech demo powered by OpenAI & Gemini developed for Omnipresent technologies to showcase the use of different LLM products and AI generated videos in creating a browser based touring experience",
       technologies: [
         "Next.js",
         "Typescript",
@@ -126,20 +126,17 @@ const BLUR_FADE_DELAY = 0.04;
 
 const ProjectSection = () => {
   return (
-    <section id="projects">
+    <section id="projects" className="mb-20">
       <div className="space-y-12 w-full py-12">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                My Projects
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Check out my latest work
+            <div className="flex flex-col gap-1">
+              <h2 className="tracking-tight font-[family-name:var(--font-geist-sans)] font-bold text-4xl">
+                Projects I've worked on
               </h2>
-              <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I&apos;ve worked on a variety of projects, from simple websites
-                to complex web applications. Here are a few of my favorites.
+              <p className="max-w-[600px] leading-6">
+                Take a look at some of my projects that I was fortunate enough
+                to build and collaborate with an awesome team
               </p>
             </div>
           </div>

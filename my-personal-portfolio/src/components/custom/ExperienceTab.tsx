@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import BoxReveal from "../magicui/box-reveal";
 
 const TabTriggerUI: React.FC<{ workPlace: string; workLocation: string }> = ({
   workLocation,
@@ -22,16 +23,22 @@ const TabContentUI: React.FC<{
   return (
     <div className="flex flex-col items-start space-y-4">
       <div>
-        <p className="text-2xl font-medium">{position}</p>
-        <p className="text-sm text-gray-500">{duration}</p>
+        <BoxReveal boxColor={"#D3D3D3"} duration={0.5}>
+          <p className="text-2xl font-medium">{position}</p>
+        </BoxReveal>
+        <BoxReveal boxColor={"#D3D3D3"} duration={0.5}>
+          <p className="text-sm text-gray-500">{duration}</p>
+        </BoxReveal>
       </div>
-      <ul className="list-disc pl-5 space-y-2">
-        {responsibilities.map((resp, index) => (
-          <li key={index} className="text-sm">
-            {resp}
-          </li>
-        ))}
-      </ul>
+      <BoxReveal boxColor={"#D3D3D3"} duration={0.5}>
+        <ul className="list-disc pl-5 space-y-2">
+          {responsibilities.map((resp, index) => (
+            <li key={index} className="text-sm">
+              {resp}
+            </li>
+          ))}
+        </ul>
+      </BoxReveal>
     </div>
   );
 };
