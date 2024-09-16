@@ -21,7 +21,7 @@ const TabContentUI: React.FC<{
   responsibilities: string[];
 }> = ({ workPlace, workLocation, position, duration, responsibilities }) => {
   return (
-    <div className="flex flex-col items-start space-y-4">
+    <div className="flex flex-col items-start space-y-2">
       <div>
         <BoxReveal boxColor={"#D3D3D3"} duration={0.5}>
           <p className="text-2xl font-medium">{position}</p>
@@ -31,7 +31,7 @@ const TabContentUI: React.FC<{
         </BoxReveal>
       </div>
       <BoxReveal boxColor={"#D3D3D3"} duration={0.5}>
-        <ul className="list-disc pl-5 space-y-2">
+        <ul className="list-disc pl-6 space-y-2">
           {responsibilities.map((resp, index) => (
             <li key={index} className="text-sm">
               {resp}
@@ -70,7 +70,7 @@ const ExperienceTab = () => {
             />
           </TabsTrigger>
         </TabsList>
-        <div className="pt-2 flex-1">
+        <div className="pt-1 flex-1">
           <TabsContent value="kap">
             <TabContentUI
               workPlace="Khudabadi Amil Panchayat"

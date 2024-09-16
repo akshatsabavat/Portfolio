@@ -14,7 +14,7 @@ const Home = () => {
       </div>
       <HeroSection />
       <div className="z-10 flex min-h-[16rem] items-center justify-center rounded-lg bg-white dark:bg-black">
-        <TextRevealByWord text="Former Athlete, Developer and an Engineer with a passion for building products" />
+        <TextRevealByWord text="Former Athlete🏀, Developer and an Engineer🛠️with a passion for building products" />
       </div>
       <ExperienceSection />
       <ProjectSection />
