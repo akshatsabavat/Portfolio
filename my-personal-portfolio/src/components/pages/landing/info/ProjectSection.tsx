@@ -1,6 +1,17 @@
 import { ProjectCard } from "@/components/custom/ProjectCard";
 import BlurFade from "@/components/magicui/blur-fade";
 
+import NextJSIcon from "@/app/images/Icons/NextJSIcon.svg";
+import TypeScriptIcon from "@/app/images/Icons/TypeScriptIcon.svg";
+import ChakraUIIcon from "@/app/images/Icons/ChakraUIIcon.svg";
+import GeminiIcon from "@/app/images/Icons/GeminiICON.svg";
+import OpenAIIcon from "@/app/images/Icons/OpenAIIcon.svg";
+import CloudflareIcon from "@/app/images/Icons/CloudflareIcon.svg";
+import PostgreSQLIcon from "@/app/images/Icons/PGIcon.svg";
+import SupabaseIcon from "@/app/images/Icons/SupabaseIcon.svg";
+
+import SnuXplore from "@/app/images/projects/SnuXplore.png";
+
 const DATA = {
   projects: [
     {
@@ -11,14 +22,13 @@ const DATA = {
       description:
         "A Tech demo powered by OpenAI & Gemini developed for Omnipresent technologies to showcase the use of different LLM products and AI generated videos in creating a browser based touring experience",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+        { name: "Next.js", icon: NextJSIcon, h: 25, w: 25 },
+        { name: "Typescript", icon: TypeScriptIcon, h: 25, w: 25 },
+        { name: "Supabase", icon: SupabaseIcon, h: 25, w: 25 },
+        { name: "PostgreSQL", icon: PostgreSQLIcon, h: 25, w: 25 },
+        { name: "Cloudflare", icon: CloudflareIcon, h: 25, w: 25 },
+        { name: "Gemini", icon: GeminiIcon, h: 45, w: 45 },
+        { name: "OpenAI", icon: OpenAIIcon, h: 25, w: 25 },
       ],
       links: [
         {
@@ -26,98 +36,9 @@ const DATA = {
           href: "https://chatcollect.com",
         },
       ],
-      image: "",
+      image: SnuXplore,
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    },
-    {
-      title: "Magic UI",
-      href: "https://magicui.design",
-      dates: "June 2023 - Present",
-      active: true,
-      description:
-        "Designed, developed and sold animated UI components for developers.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://magicui.design",
-        },
-        {
-          type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
-        },
-      ],
-      image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
-    },
-    {
-      title: "llm.report",
-      href: "https://llm.report",
-      dates: "April 2023 - September 2023",
-      active: true,
-      description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://llm.report",
-        },
-        {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
-        },
-      ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
-    },
-    {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
-      active: true,
-      description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://automatic.chat",
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
     },
   ],
 };
@@ -141,7 +62,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </BlurFade>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+        <div className=" grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[750px] mx-auto">
           {DATA.projects.map((project, id) => (
             <BlurFade
               key={project.title}

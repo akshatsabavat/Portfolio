@@ -11,16 +11,20 @@ import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import SnuXplore from "@/app/images/projects/SnuXplore.png";
 
 interface Props {
   title: string;
   href?: string;
   description: string;
   dates: string;
-  tags: readonly string[];
+  tags: readonly {
+    name: string;
+    icon: StaticImageData;
+    h: number;
+    w: number;
+  }[];
   link?: string;
-  image?: string;
+  image?: StaticImageData;
   video?: string;
   links?: readonly {
     icon: React.ReactNode;
@@ -53,7 +57,7 @@ export function ProjectCard({
         className={cn("block cursor-pointer", className)}
       >
         <Image
-          src={SnuXplore as StaticImageData}
+          src={image as StaticImageData}
           alt={title}
           width={500}
           height={300}
@@ -63,7 +67,7 @@ export function ProjectCard({
       <CardHeader className="px-3">
         <div className="space-y-1">
           <CardTitle className="text-xl">{title}</CardTitle>
-          <time className=" text-xs">{dates}</time>
+          <time className="text-xs">{dates}</time>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
@@ -74,15 +78,20 @@ export function ProjectCard({
       </CardHeader>
       <CardContent className="mt-auto flex flex-col px-2">
         {tags && tags.length > 0 && (
-          <div className=" flex flex-wrap gap-2">
-            {tags?.map((tag) => (
-              <Badge
-                className="px-1 py-0 text-[12px]"
-                variant="secondary"
-                key={tag}
+          <div className="flex flex-wrap gap-1">
+            {tags?.map((tag, index) => (
+              <div
+                className="flex items-center px-1 py-0 text-[12px]"
+                key={index}
               >
-                {tag}
-              </Badge>
+                <Image
+                  src={tag.icon}
+                  alt={tag.name}
+                  width={tag.w}
+                  height={tag.h}
+                  className="mr-1"
+                />
+              </div>
             ))}
           </div>
         )}

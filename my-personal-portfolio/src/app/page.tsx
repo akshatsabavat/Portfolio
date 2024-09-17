@@ -18,7 +18,6 @@ const Home = () => {
       </div>
       <ExperienceSection />
       <ProjectSection />
-      <AboutSection />
       <VelocityTextSection />
     </div>
   );
