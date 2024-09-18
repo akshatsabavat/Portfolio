@@ -1,16 +1,14 @@
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import Image, { StaticImageData } from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import ShinyButton from "../magicui/shiny-button";
+
+import SitelinkIcon from "@/app/images/Icons/SiteLink.svg";
+import GithubIcon from "@/app/images/Icons/GithubIcon.svg";
 
 interface Props {
   title: string;
@@ -26,12 +24,15 @@ interface Props {
   link?: string;
   image?: StaticImageData;
   video?: string;
-  links?: readonly {
-    icon: React.ReactNode;
+  links?: {
     type: string;
     href: string;
-  }[];
+  };
   className?: string;
+  indicator?: {
+    show: boolean;
+    text: string;
+  };
 }
 
 export function ProjectCard({
@@ -45,31 +46,49 @@ export function ProjectCard({
   video,
   links,
   className,
+  indicator,
 }: Props) {
   return (
     <Card
       className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
+        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative"
       }
     >
-      <Link
-        href={href || "#"}
-        className={cn("block cursor-pointer", className)}
-      >
+      {indicator && indicator.show && (
+        <div className="absolute top-2 left-2 z-10">
+          <Badge variant="destructive" className="text-xs px-2 py-1">
+            {indicator.text}
+          </Badge>
+        </div>
+      )}
+      <Link href={href ?? ""} className={cn("block cursor-pointer", className)}>
         <Image
           src={image as StaticImageData}
           alt={title}
           width={500}
           height={300}
-          className="h-40 w-full overflow-hidden object-cover object-top"
+          className="h-40 w-full overflow-hidden object-cover object-top border-b-2 border-gray-100"
         />
       </Link>
       <CardHeader className="px-3">
         <div className="space-y-1">
-          <CardTitle className="text-xl">{title}</CardTitle>
-          <time className="text-xs">{dates}</time>
-          <div className="hidden font-sans text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+          <div className="flex flex-row items-baseline justify-between w-full mb-3">
+            <div className="flex flex-col gap-1">
+              <CardTitle className="text-xl">{title}</CardTitle>
+              <time className="text-xs">{dates}</time>
+            </div>
+            <div className="flex flex-row gap-2">
+              <ShinyButton href={href ?? ""} px={"2"} icon={SitelinkIcon} />
+              <a className="pt-1.5" href={links?.href}>
+                <Image
+                  src={GithubIcon as StaticImageData}
+                  alt="Project Github URL"
+                  height={24}
+                  width={24}
+                  className="opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                />
+              </a>
+            </div>
           </div>
           <Markdown className="prose max-w-full text-pretty text-sm text-muted-foreground dark:prose-invert">
             {description}
@@ -96,19 +115,6 @@ export function ProjectCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="px-2 pb-2">
-        {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
-      </CardFooter>
     </Card>
   );
 }
