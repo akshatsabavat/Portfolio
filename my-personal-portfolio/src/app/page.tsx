@@ -1,7 +1,5 @@
 import HeroSection from "@/components/pages/landing/hero/HeroSectionTextDisplay";
 import NavigationDock from "@/components/custom/NavigationDock";
-import VelocityTextSection from "@/components/pages/landing/hero/VelocityTextSection";
-import AboutSection from "@/components/pages/landing/info/AboutSection";
 import ExperienceSection from "@/components/pages/landing/info/ExperienceSection";
 import ProjectSection from "@/components/pages/landing/info/ProjectSection";
 import TextRevealByWord from "@/components/magicui/text-reveal";
@@ -18,7 +16,6 @@ const Home = () => {
       </div>
       <ExperienceSection />
       <ProjectSection />
-      <VelocityTextSection />
     </div>
   );
 };

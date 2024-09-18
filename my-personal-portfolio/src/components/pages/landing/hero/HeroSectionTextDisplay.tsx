@@ -22,6 +22,13 @@ const HeroSection = () => {
     setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)] relative flex h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <div className="absolute z-10 flex items-center justify-center">
@@ -62,7 +69,7 @@ const HeroSection = () => {
           />
           <div className="mt-3 flex gap-3 max-w-[500px] mx-auto justify-center items-center flex-gap-2">
             <Button>Contact me</Button>
-            <ShinyButton text="See my work" />
+            <ShinyButton onClick={scrollToProjects} text="See my work" />
           </div>
         </div>
       </div>

@@ -69,22 +69,17 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/akshatsabavat",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/sabavatakshat",
         icon: Icons.linkedin,
-      },
-      X: {
-        name: "X",
-        url: "#",
-        icon: Icons.x,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:sabavatakshat@gmail.com",
         icon: Icons.email,
       },
     },
@@ -120,15 +115,17 @@ const NavigationDock = () => {
           <DockIcon key={name}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <a
                   href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-10 rounded-full"
                   )}
                 >
                   <social.icon className="size-4" />
-                </Link>
+                </a>
               </TooltipTrigger>
               <TooltipContent>
                 <p>{name}</p>

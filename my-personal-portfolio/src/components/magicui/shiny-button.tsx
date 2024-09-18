@@ -30,40 +30,55 @@ interface ShinyButtonProps {
   text?: string;
   px?: string;
   className?: string;
-  icon?: StaticImageData; // Path to the SVG icon
+  icon?: StaticImageData;
+  onClick?: () => void; // Add this line
 }
 
-const ShinyButton = ({ text, className, icon, px, href }: ShinyButtonProps) => {
-  return (
-    <a href={href}>
-      <motion.button
-        {...animationProps}
-        className={cn(
-          `relative rounded-lg px-${
-            px ? px : "6"
-          } py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)`,
-          className
-        )}
+const ShinyButton = ({
+  text,
+  className,
+  icon,
+  px,
+  href,
+  onClick,
+}: ShinyButtonProps) => {
+  const ButtonContent = () => (
+    <motion.button
+      {...animationProps}
+      className={cn(
+        `relative rounded-lg px-${
+          px ? px : "6"
+        } py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)`,
+        className
+      )}
+      onClick={onClick} // Add this line
+    >
+      <span
+        className="relative flex items-center justify-center h-full w-full text-sm tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)] font-[family-name:var(--font-geist-sans)]"
+        style={{
+          maskImage:
+            "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
+        }}
       >
-        <span
-          className="relative flex items-center justify-center h-full w-full text-sm tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)] font-[family-name:var(--font-geist-sans)]"
-          style={{
-            maskImage:
-              "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
-          }}
-        >
-          {icon && <Image src={icon} alt="" width={20} height={20} />}
-          {text}
-        </span>
-        <span
-          style={{
-            mask: "linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box,linear-gradient(rgb(0,0,0), rgb(0,0,0))",
-            maskComposite: "exclude",
-          }}
-          className="absolute inset-0 z-10 block rounded-[inherit] bg-[linear-gradient(-75deg,hsl(var(--primary)/10%)_calc(var(--x)+20%),hsl(var(--primary)/50%)_calc(var(--x)+25%),hsl(var(--primary)/10%)_calc(var(--x)+100%))] p-px"
-        ></span>
-      </motion.button>
+        {icon && <Image src={icon} alt="" width={20} height={20} />}
+        {text}
+      </span>
+      <span
+        style={{
+          mask: "linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box,linear-gradient(rgb(0,0,0), rgb(0,0,0))",
+          maskComposite: "exclude",
+        }}
+        className="absolute inset-0 z-10 block rounded-[inherit] bg-[linear-gradient(-75deg,hsl(var(--primary)/10%)_calc(var(--x)+20%),hsl(var(--primary)/50%)_calc(var(--x)+25%),hsl(var(--primary)/10%)_calc(var(--x)+100%))] p-px"
+      ></span>
+    </motion.button>
+  );
+
+  return href ? (
+    <a href={href}>
+      <ButtonContent />
     </a>
+  ) : (
+    <ButtonContent />
   );
 };
 
