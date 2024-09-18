@@ -6,7 +6,7 @@ const ExperienceSection = () => {
       <div className="flex flex-col space-y-8">
         <div className="flex flex-col gap-1">
           <h2 className="tracking-tight font-[family-name:var(--font-geist-sans)] font-bold text-4xl">
-            Where I've Worked <span className="text-4xl">📋</span>
+            Where I&apos;ve Worked <span className="text-4xl">📋</span>
           </h2>
           <p className="max-w-[600px] leading-6">
             Have a look at some of the places I have had the pleasure of working

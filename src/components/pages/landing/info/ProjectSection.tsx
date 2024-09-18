@@ -3,7 +3,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 
 import NextJSIcon from "@/app/images/Icons/NextJSIcon.svg";
 import TypeScriptIcon from "@/app/images/Icons/TypeScriptIcon.svg";
-import GeminiIcon from "@/app/images/Icons/GeminiICON.svg";
+import GeminiIcon from "@/app/images/Icons/GeminiIcon.svg";
 import OpenAIIcon from "@/app/images/Icons/OpenAIIcon.svg";
 import CloudflareIcon from "@/app/images/Icons/CloudflareIcon.svg";
 import PostgreSQLIcon from "@/app/images/Icons/PGIcon.svg";
@@ -117,7 +117,7 @@ const ProjectSection = () => {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="flex flex-col gap-1">
               <h2 className="tracking-tight font-[family-name:var(--font-geist-sans)] font-bold text-4xl">
-                Projects I've worked on
+                Projects I&apos;ve worked on
               </h2>
               <p className="max-w-[600px] leading-6">
                 Take a look at some of my projects that I was fortunate enough

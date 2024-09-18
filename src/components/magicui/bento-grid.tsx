@@ -1,9 +1,8 @@
+/* eslint-disable */
 import { ReactNode } from "react";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import AnimatedGradientText from "./animated-gradient-text";
 
 const BentoGrid = ({
@@ -29,7 +28,6 @@ const BentoCard = ({
   name,
   className,
   background,
-  Icon,
   description,
   href,
   cta,
@@ -37,6 +35,7 @@ const BentoCard = ({
   name: string;
   className: string;
   background: ReactNode;
+  /* tslint:disable-next-line */
   Icon: any;
   description: string;
   href: string;

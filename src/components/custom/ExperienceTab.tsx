@@ -19,7 +19,7 @@ const TabContentUI: React.FC<{
   position: string;
   duration: string;
   responsibilities: string[];
-}> = ({ workPlace, workLocation, position, duration, responsibilities }) => {
+}> = ({ position, duration, responsibilities }) => {
   return (
     <div className="flex flex-col items-start space-y-2">
       <div>
