@@ -10,8 +10,12 @@ import GalleryIcon from "@/app/images/Icons/GalleryIcon.svg";
 
 interface MediaItem {
   type: "image" | "video";
-  src: string;
+  src: string | StaticImageData;
   thumbnail: string;
+  description: {
+    title: string;
+    content: string;
+  };
   alt: string;
 }
 
@@ -57,22 +61,23 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
           />
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-4xl w-full h-[80vh]">
+      <DialogContent className="max-w-4xl w-full font-[family-name:var(--font-geist-sans)]">
+        <h1 className="tracking-tight font-bold text-2xl">{`${ModalTitle} Project Gallery`}</h1>
         <div className="flex flex-col h-full">
           <div className="relative flex-grow">
             {currentItem.type === "image" ? (
-              <img
-                src={currentItem.src}
+              <Image
+                src={currentItem.src as StaticImageData}
                 alt={currentItem.alt}
-                className="w-full h-full object-contain"
+                className="w-full h-[45vh] object-contain"
               />
             ) : (
               <div className="w-full h-full">
                 <video
-                  src={currentItem.src}
+                  src={currentItem.src as string}
                   controls
                   className="w-full h-full object-contain"
-                  style={{ maxHeight: "60vh" }}
+                  style={{ maxHeight: "50vh" }}
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -95,24 +100,14 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
               <ChevronRight className="h-6 w-6" />
             </Button>
           </div>
-          <div className="flex justify-center items-center mt-4 space-x-2 overflow-x-auto py-2">
-            {mediaItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`focus:outline-none ${
-                  index === currentIndex ? "ring-2 ring-primary" : ""
-                }`}
-              >
-                <img
-                  src={item.thumbnail}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="w-16 h-16 object-cover rounded-md"
-                />
-              </button>
-            ))}
+          <div className="flex flex-col gap-1 mt-4 overflow-x-auto py-2">
+            <p className="font-semibold text-xl ">{`${mediaItems[currentIndex].description.title}`}</p>
+            <p className="text-sm">{`${mediaItems[currentIndex].description.content}`}</p>
           </div>
         </div>
+        <p className=" flex justify-center">
+          <p>{`${currentIndex + 1}/${mediaItems.length}`}</p>
+        </p>
       </DialogContent>
     </Dialog>
   );

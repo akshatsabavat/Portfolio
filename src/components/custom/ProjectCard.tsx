@@ -13,8 +13,12 @@ import GithubIcon from "@/app/images/Icons/GithubIcon.svg";
 
 interface MediaItem {
   type: "image" | "video";
-  src: string;
+  src: string | StaticImageData;
   thumbnail: string;
+  description: {
+    title: string;
+    content: string;
+  };
   alt: string;
 }
 
@@ -88,7 +92,7 @@ export function ProjectCard({
             <div className="flex flex-row gap-2">
               <ShinyButton href={href ?? ""} px={"2"} icon={SitelinkIcon} />
               {mediaItems.length > 0 ? (
-                <GalleryModal mediaItems={mediaItems} ModalTitle="Explorance" />
+                <GalleryModal mediaItems={mediaItems} ModalTitle={title} />
               ) : (
                 <></>
               )}

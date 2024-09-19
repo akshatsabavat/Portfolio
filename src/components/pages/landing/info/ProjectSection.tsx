@@ -1,4 +1,6 @@
 import { ProjectCard } from "@/components/custom/ProjectCard";
+import { StaticImageData } from "next/image";
+
 import BlurFade from "@/components/magicui/blur-fade";
 
 import NextJSIcon from "@/app/images/Icons/NextJSIcon.svg";
@@ -15,11 +17,12 @@ import ExpressIcon from "@/app/images/Icons/ExpressIconm.svg";
 import PrismaIcon from "@/app/images/Icons/PrismaIcon.svg";
 import JavascriptIcon from "@/app/images/Icons/JavascriptIcon.svg";
 import RemixIcon from "@/app/images/Icons/RemixIcon.svg";
+import FigmaIcon from "@/app/images/Icons/FigmaIcon.svg";
 
 import SnuXplore from "@/app/images/projects/Explorance.png";
 import Explorance from "@/app/images/projects/SnuXplore.png";
 import Indibliss from "@/app/images/projects/Indibliss.png";
-import { StaticImageData } from "next/image";
+import ExploranceTeam from "@/app/images/projects/TeamPicture_Explorance.jpg";
 
 interface Technology {
   name: string;
@@ -30,8 +33,12 @@ interface Technology {
 
 interface MediaItem {
   type: "image" | "video";
-  src: string;
+  src: string | StaticImageData;
   thumbnail: string;
+  description: {
+    title: string;
+    content: string;
+  };
   alt: string;
 }
 
@@ -93,12 +100,33 @@ const DATA: ProjectData = {
           src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/ExploranceAtFair.mp4",
           thumbnail: "/placeholder.svg?height=100&width=100",
           alt: "Project 2 Video",
+          description: {
+            title: "Explorance @ SNU Day",
+            content:
+              "Our Tech Demo, incollaboration with Omnipresent Robotics was chosen to be presented at the annual SNU Day, being on full display for industry experts, Roshni Nadar, Shikhar Malhotra and Shiv Nadar himself to see",
+          },
         },
         {
           type: "video",
           src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/InitialTestingExplorance.mp4",
           thumbnail: "/placeholder.svg?height=100&width=100",
           alt: "Project 5 Video",
+          description: {
+            title: "Explorance Inital AI Runs",
+            content:
+              "This is when we were able to almost release real time speech to speech conversation with the LLM in a way, as we overcame a substantial hurdle of reducing the time of response from 2 mins to about 9 to 10 seconds",
+          },
+        },
+        {
+          type: "image",
+          src: ExploranceTeam as StaticImageData,
+          thumbnail: "/placeholder.svg?height=100&width=100",
+          alt: "Project 2 Video",
+          description: {
+            title: "The Explorance Team",
+            content:
+              "I had the pleasure of collaborating with Keshav and Somesh to bring this demo to life. Keshav contributed significantly with his UI/UX skills, ensuring that all features were user-friendly and aligned with the overall interface. Somesh focused on training the LLM with SNU-specific data, while I handled the backend and frontend development, along with implementing the LLM into our application.",
+          },
         },
       ],
       image: Explorance,
@@ -119,6 +147,7 @@ const DATA: ProjectData = {
         { name: "Prisma", icon: PrismaIcon, h: 25, w: 25 },
         { name: "PostgreSQL", icon: PostgreSQLIcon, h: 25, w: 25 },
         { name: "Express", icon: ExpressIcon, h: 25, w: 25 },
+        { name: "Figma", icon: FigmaIcon, h: 15, w: 15 },
       ],
       links: {
         type: "Website",
