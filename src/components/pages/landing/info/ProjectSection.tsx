@@ -19,8 +19,47 @@ import RemixIcon from "@/app/images/Icons/RemixIcon.svg";
 import SnuXplore from "@/app/images/projects/Explorance.png";
 import Explorance from "@/app/images/projects/SnuXplore.png";
 import Indibliss from "@/app/images/projects/Indibliss.png";
+import { StaticImageData } from "next/image";
 
-const DATA = {
+interface Technology {
+  name: string;
+  icon: string | StaticImageData;
+  h: number;
+  w: number;
+}
+
+interface MediaItem {
+  type: "image" | "video";
+  src: string;
+  thumbnail: string;
+  alt: string;
+}
+
+interface Project {
+  title: string;
+  href: string;
+  dates: string;
+  active: boolean;
+  description: string;
+  technologies: Technology[];
+  links: {
+    type: string;
+    href: string;
+  };
+  indicator?: {
+    show: boolean;
+    text: string;
+  };
+  mediaItems: MediaItem[];
+  image: StaticImageData;
+  video: string;
+}
+
+interface ProjectData {
+  projects: Project[];
+}
+
+const DATA: ProjectData = {
   projects: [
     {
       title: "Explorance",
@@ -48,11 +87,25 @@ const DATA = {
         show: true,
         text: "AI suspended: no more funding",
       },
-
+      mediaItems: [
+        {
+          type: "video",
+          src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/ExploranceAtFair.mp4",
+          thumbnail: "/placeholder.svg?height=100&width=100",
+          alt: "Project 2 Video",
+        },
+        {
+          type: "video",
+          src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/InitialTestingExplorance.mp4",
+          thumbnail: "/placeholder.svg?height=100&width=100",
+          alt: "Project 5 Video",
+        },
+      ],
       image: Explorance,
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
+
     {
       title: "SnuXplore",
       href: "https://www.snuxplore.com/",
@@ -71,7 +124,7 @@ const DATA = {
         type: "Website",
         href: "https://github.com/SNUxplore/frontend",
       },
-
+      mediaItems: [],
       image: SnuXplore,
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
@@ -99,7 +152,7 @@ const DATA = {
         show: true,
         text: "Demo version: site under devops maintainance",
       },
-
+      mediaItems: [],
       image: Indibliss,
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
@@ -138,11 +191,12 @@ const ProjectSection = () => {
                 title={project.title}
                 description={project.description}
                 dates={project.dates}
-                tags={project.technologies}
+                technologies={project.technologies}
                 image={project.image}
                 video={project.video}
                 links={project.links}
                 indicator={project.indicator}
+                mediaItems={project.mediaItems}
               />
             </BlurFade>
           ))}
