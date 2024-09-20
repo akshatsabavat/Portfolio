@@ -6,18 +6,30 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import ShinyButton from "../magicui/shiny-button";
+import GalleryModal from "./GalleryModal";
 
 import SitelinkIcon from "@/app/images/Icons/SiteLink.svg";
 import GithubIcon from "@/app/images/Icons/GithubIcon.svg";
+
+interface MediaItem {
+  type: "image" | "video";
+  src: string | StaticImageData;
+  thumbnail: string;
+  description: {
+    title: string;
+    content: string;
+  };
+  alt: string;
+}
 
 interface Props {
   title: string;
   href?: string;
   description: string;
   dates: string;
-  tags: readonly {
+  technologies: {
     name: string;
-    icon: StaticImageData;
+    icon: string | StaticImageData;
     h: number;
     w: number;
   }[];
@@ -33,18 +45,20 @@ interface Props {
     show: boolean;
     text: string;
   };
+  mediaItems: MediaItem[];
 }
 
 export function ProjectCard({
   title,
   href,
+  technologies,
   description,
   dates,
-  tags,
   image,
   links,
   className,
   indicator,
+  mediaItems,
 }: Props) {
   return (
     <Card
@@ -77,6 +91,11 @@ export function ProjectCard({
             </div>
             <div className="flex flex-row gap-2">
               <ShinyButton href={href ?? ""} px={"2"} icon={SitelinkIcon} />
+              {mediaItems.length > 0 ? (
+                <GalleryModal mediaItems={mediaItems} ModalTitle={title} />
+              ) : (
+                <></>
+              )}
               <a className="pt-1.5" href={links?.href}>
                 <Image
                   src={GithubIcon as StaticImageData}
@@ -94,9 +113,9 @@ export function ProjectCard({
         </div>
       </CardHeader>
       <CardContent className="mt-auto flex flex-col px-2">
-        {tags && tags.length > 0 && (
+        {technologies && technologies.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {tags?.map((tag, index) => (
+            {technologies?.map((tag, index) => (
               <div
                 className="flex items-center px-1 py-0 text-[12px]"
                 key={index}
