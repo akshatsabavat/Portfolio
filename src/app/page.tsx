@@ -3,6 +3,7 @@ import NavigationDock from "@/components/custom/NavigationDock";
 import ExperienceSection from "@/components/pages/landing/info/ExperienceSection";
 import ProjectSection from "@/components/pages/landing/info/ProjectSection";
 import TextRevealByWord from "@/components/magicui/text-reveal";
+import Footer from "@/components/pages/landing/contact/Footer";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <ExperienceSection />
         <ProjectSection />
       </div>
+      <Footer />
     </div>
   );
 };

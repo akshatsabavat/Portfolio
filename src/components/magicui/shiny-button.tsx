@@ -31,7 +31,10 @@ interface ShinyButtonProps {
   px?: string;
   className?: string;
   icon?: StaticImageData;
-  onClick?: () => void; // Add this line
+  iconH?: number;
+  iconW?: number;
+  onClick?: () => void;
+  reverseScheme?: boolean; // Add this new prop
 }
 
 const ShinyButton = ({
@@ -40,7 +43,10 @@ const ShinyButton = ({
   icon,
   px,
   href,
+  iconH,
+  iconW,
   onClick,
+  reverseScheme = false, // Default to false
 }: ShinyButtonProps) => {
   const ButtonContent = () => (
     <motion.button
@@ -48,19 +54,29 @@ const ShinyButton = ({
       className={cn(
         `relative rounded-lg px-${
           px ? px : "6"
-        } py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)`,
+        } py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out`,
+        reverseScheme
+          ? "bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] hover:shadow-[0_0_20px_hsl(var(--primary)/10%)] dark:hover:shadow"
+          : "hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className
       )}
-      onClick={onClick} // Add this line
+      onClick={onClick}
     >
       <span
-        className="relative flex items-center justify-center h-full w-full text-sm tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)] font-[family-name:var(--font-geist-sans)]"
+        className={cn(
+          "relative flex items-center justify-center h-full w-full text-sm tracking-wide font-[family-name:var(--font-geist-sans)]",
+          reverseScheme
+            ? "text-[rgb(255,255,255,90%)] dark:text-[rgb(0,0,0,65%)] dark:font-normal font-light"
+            : "text-[rgb(0,0,0,65%)] dark:text-[rgb(255,255,255,90%)] dark:font-light font-normal"
+        )}
         style={{
           maskImage:
             "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
         }}
       >
-        {icon && <Image src={icon} alt="" width={20} height={20} />}
+        {icon && (
+          <Image src={icon} alt="" width={iconW ?? 20} height={iconH ?? 20} />
+        )}
         {text}
       </span>
       <span
