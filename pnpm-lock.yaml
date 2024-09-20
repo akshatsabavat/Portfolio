@@ -4669,17 +4669,6 @@ packages:
     dependencies:
       reusify: 1.0.4
 
-  /fibers@5.0.3:
-    resolution:
-      {
-        integrity: sha512-/qYTSoZydQkM21qZpGLDLuCq8c+B8KhuCQ1kLPvnRNhxhVbvrpmH9l2+Lblf5neDuEsY4bfT7LeO553TXQDvJw==,
-      }
-    engines: { node: ">=10.0.0" }
-    requiresBuild: true
-    dependencies:
-      detect-libc: 1.0.3
-    dev: false
-
   /file-entry-cache@6.0.1:
     resolution:
       {
@@ -7527,8 +7516,6 @@ packages:
         integrity: sha512-g7UDPo8z33h0KAr1cXDU0UzV3LTHONom/EuU7oyEgTEf4/sWR8OYzvKYwiEYqgCmMlbF8YQutoDAfw3hsDU5EQ==,
       }
     engines: { node: ">=0.5.2" }
-    dependencies:
-      fibers: 5.0.3
     dev: false
 
   /tailwind-merge@2.5.2:
