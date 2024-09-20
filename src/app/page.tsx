@@ -11,11 +11,13 @@ const Home = () => {
         <NavigationDock />
       </div>
       <HeroSection />
-      <div className="z-10 flex min-h-[16rem] items-center justify-center rounded-lg bg-white dark:bg-black">
-        <TextRevealByWord text="Former Athlete🏀, Developer and an Engineer🛠️with a passion for building products" />
+      <div className="px-4 sm:px-6 md:px-8 lg:px-0">
+        <div className="z-10 flex min-h-[16rem] items-center justify-center rounded-lg bg-white dark:bg-black">
+          <TextRevealByWord text="Former Athlete🏀, Developer and an Engineer🛠️with a passion for building products" />
+        </div>
+        <ExperienceSection />
+        <ProjectSection />
       </div>
-      <ExperienceSection />
-      <ProjectSection />
     </div>
   );
 };
