@@ -1,22 +1,47 @@
 "use client";
 
-import Link from "next/link";
-import { Linkedin, Send } from "lucide-react";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import ShinyButton from "@/components/magicui/shiny-button";
-
 import MailSendIcon from "@/app/images/Icons/MailSendIcon.svg";
 
 export default function Footer() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle the email submission here
-    console.log("Email submitted:", email);
-    setEmail("");
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting message:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -27,27 +52,49 @@ export default function Footer() {
           text="Like what you see ?"
         />
         <p className="mb-6">Let's talk and get this going !</p>
-        <form
-          onSubmit={handleSubmit}
-          className="flex w-full max-w-sm items-center space-x-2"
-        >
-          <div className="relative flex-grow">
+        <div className="w-full max-w-md space-y-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Input
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full sm:w-1/2 py-2 px-4 bg-transparent border-gray-300 dark:border-gray-700 rounded-lg transition-all duration-300 ease-in-out"
+            />
             <Input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full py-2 px-4 bg-transparent  border-gray-300 dark:border-gray-700 rounded-lg transition-all duration-300 ease-in-out"
+              className="w-full sm:w-1/2 py-2 px-4 bg-transparent border-gray-300 dark:border-gray-700 rounded-lg transition-all duration-300 ease-in-out"
             />
           </div>
-          <ShinyButton
-            reverseScheme={false}
-            px="2"
-            iconH={25}
-            iconW={25}
-            icon={MailSendIcon}
+          <Input
+            type="text"
+            placeholder="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full py-2 px-4 bg-transparent border-gray-300 dark:border-gray-700 rounded-lg transition-all duration-300 ease-in-out"
           />
-        </form>
+          <div className="flex justify-start">
+            <ShinyButton
+              iconH={25}
+              iconW={25}
+              icon={MailSendIcon}
+              text={isSubmitting ? "Submitting" : "Send message"}
+              className="text-black"
+              onClick={handleSubmit}
+            />
+          </div>
+          {submitStatus === "success" && (
+            <p className="mt-4 text-green-500">Message sent successfully!</p>
+          )}
+          {submitStatus === "error" && (
+            <p className="mt-4 text-red-500">
+              Error sending message. Please try again.
+            </p>
+          )}
+        </div>
       </div>
     </footer>
   );

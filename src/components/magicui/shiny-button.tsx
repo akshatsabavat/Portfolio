@@ -33,7 +33,7 @@ interface ShinyButtonProps {
   icon?: StaticImageData;
   iconH?: number;
   iconW?: number;
-  onClick?: () => void;
+  onClick?: () => void | Promise<void>;
   reverseScheme?: boolean; // Add this new prop
 }
 
@@ -74,10 +74,16 @@ const ShinyButton = ({
             "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
         }}
       >
-        {icon && (
-          <Image src={icon} alt="" width={iconW ?? 20} height={iconH ?? 20} />
-        )}
         {text}
+        {icon && (
+          <Image
+            className={text ? "ml-1" : ""}
+            src={icon}
+            alt=""
+            width={iconW ?? 20}
+            height={iconH ?? 20}
+          />
+        )}
       </span>
       <span
         style={{
