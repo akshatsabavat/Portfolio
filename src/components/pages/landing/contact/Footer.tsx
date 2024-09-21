@@ -45,7 +45,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-6 md:py-8 mb-20 font-[family-name:var(--font-geist-sans)]">
+    <footer className="pt-6 md:pt-8 pb-40 font-[family-name:var(--font-geist-sans)]">
       <div className="flex flex-col items-center">
         <GradualSpacing
           className="font-display text-center text-3xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-6xl md:leading-[5rem]"

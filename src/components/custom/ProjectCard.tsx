@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import Image, { StaticImageData } from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +12,10 @@ import GalleryModal from "./GalleryModal";
 
 import SitelinkIcon from "@/app/images/Icons/SiteLink.svg";
 import GithubIcon from "@/app/images/Icons/GithubIcon.svg";
+import GithubIconLight from "@/app/images/Icons/GithubIconLight.svg";
+import SiteLinkLight from "@/app/images/Icons/SiteLinkLight.svg";
+
+import { useTheme } from "next-themes";
 
 interface MediaItem {
   type: "image" | "video";
@@ -60,6 +66,8 @@ export function ProjectCard({
   indicator,
   mediaItems,
 }: Props) {
+  const { setTheme, theme } = useTheme();
+
   return (
     <Card
       className={
@@ -79,7 +87,7 @@ export function ProjectCard({
           alt={title}
           width={500}
           height={300}
-          className="h-40 w-full overflow-hidden object-cover object-top border-b-2 border-gray-100"
+          className="h-40 w-full overflow-hidden object-cover object-top border-b-2 border-gray-100 dark:border-none"
         />
       </Link>
       <CardHeader className="px-3">
@@ -90,19 +98,27 @@ export function ProjectCard({
               <time className="text-xs">{dates}</time>
             </div>
             <div className="flex flex-row gap-2">
-              <ShinyButton href={href ?? ""} px={"2"} icon={SitelinkIcon} />
+              <ShinyButton
+                href={href ?? ""}
+                px={"2"}
+                icon={theme === "dark" ? SiteLinkLight : SitelinkIcon}
+              />
               {mediaItems.length > 0 ? (
                 <GalleryModal mediaItems={mediaItems} ModalTitle={title} />
               ) : (
                 <></>
               )}
-              <a className="pt-1.5" href={links?.href}>
+              <a className="pt-1.5 dark:pt-0.5" href={links?.href}>
                 <Image
-                  src={GithubIcon as StaticImageData}
+                  src={
+                    theme === "dark"
+                      ? (GithubIconLight as StaticImageData)
+                      : (GithubIcon as StaticImageData)
+                  }
                   alt="Project Github URL"
-                  height={24}
-                  width={24}
-                  className="opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                  height={theme === "dark" ? 33 : 24}
+                  width={theme === "dark" ? 33 : 24}
+                  className="opacity-40 text-red-100 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                 />
               </a>
             </div>

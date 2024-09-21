@@ -7,7 +7,7 @@ import Footer from "@/components/pages/landing/contact/Footer";
 
 const Home = () => {
   return (
-    <div className="relative font-[family-name:var(--font-geist-sans)]">
+    <div className="relative font-[family-name:var(--font-geist-sans)] dark:bg-black">
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
         <NavigationDock />
       </div>

@@ -59,12 +59,12 @@ const TabsList = React.forwardRef<
     <div className="relative flex" ref={tabsRef}>
       {/* Vertical line */}
       <div
-        className="absolute left-0 w-[2px] bg-gray-200 transition-all duration-300 ease-in-out"
+        className="absolute left-0 w-[2px] bg-gray-200 dark:bg-gray-900 transition-all duration-300 ease-in-out"
         style={lineStyle}
       />
       {/* Active indicator */}
       <div
-        className="absolute left-0 w-[2px] bg-black transition-all duration-300 ease-in-out"
+        className="absolute left-0 w-[2px] bg-black dark:bg-white transition-all duration-300 ease-in-out"
         style={indicatorStyle}
       />
       <TabsPrimitive.List
@@ -84,7 +84,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex items-center justify-start w-full whitespace-nowrap py-3 last:mb-0 text-[14px] font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-gray-500 data-[state=active]:text-black",
+      "flex items-center justify-start w-full whitespace-nowrap py-3 last:mb-0 text-[14px] font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-gray-500 data-[state=active]:text-black dark:data-[state=active]:text-white",
       className
     )}
     {...props}

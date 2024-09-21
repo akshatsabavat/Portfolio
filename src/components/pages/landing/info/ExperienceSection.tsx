@@ -2,7 +2,7 @@ import ExperienceTab from "@/components/custom/ExperienceTab";
 
 const ExperienceSection = () => {
   return (
-    <section className="mb-40 mt-0 max-w-[900px] mx-auto">
+    <section className="mb-40 mt-20 max-w-[900px] mx-auto">
       <div className="flex flex-col space-y-8">
         <div className="flex flex-col gap-1">
           <h2 className="tracking-tight font-[family-name:var(--font-geist-sans)] font-bold text-4xl">
