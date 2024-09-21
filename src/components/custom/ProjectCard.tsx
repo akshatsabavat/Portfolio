@@ -1,21 +1,18 @@
-"use client";
-
-import { Badge } from "@/components/ui/badge";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-
-import Link from "next/link";
 import Markdown from "react-markdown";
 import ShinyButton from "../magicui/shiny-button";
 import GalleryModal from "./GalleryModal";
 
 import SitelinkIcon from "@/app/images/Icons/SiteLink.svg";
+import SiteLinkLight from "@/app/images/Icons/SiteLinkLight.svg";
 import GithubIcon from "@/app/images/Icons/GithubIcon.svg";
 import GithubIconLight from "@/app/images/Icons/GithubIconLight.svg";
-import SiteLinkLight from "@/app/images/Icons/SiteLinkLight.svg";
-
-import { useTheme } from "next-themes";
 
 interface MediaItem {
   type: "image" | "video";
@@ -28,17 +25,22 @@ interface MediaItem {
   alt: string;
 }
 
+interface Technology {
+  name: string;
+  icon: {
+    light: StaticImageData;
+    dark: StaticImageData;
+  };
+  h: number;
+  w: number;
+}
+
 interface Props {
   title: string;
   href?: string;
   description: string;
   dates: string;
-  technologies: {
-    name: string;
-    icon: string | StaticImageData;
-    h: number;
-    w: number;
-  }[];
+  technologies: Technology[];
   link?: string;
   image?: StaticImageData;
   video?: string;
@@ -66,7 +68,18 @@ export function ProjectCard({
   indicator,
   mediaItems,
 }: Props) {
-  const { setTheme, theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
 
   return (
     <Card
@@ -74,7 +87,7 @@ export function ProjectCard({
         "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative"
       }
     >
-      {indicator && indicator.show && (
+      {indicator?.show && (
         <div className="absolute top-2 left-2 z-10">
           <Badge variant="destructive" className="text-xs px-2 py-1">
             {indicator.text}
@@ -82,13 +95,15 @@ export function ProjectCard({
         </div>
       )}
       <Link href={href ?? ""} className={cn("block cursor-pointer", className)}>
-        <Image
-          src={image as StaticImageData}
-          alt={title}
-          width={500}
-          height={300}
-          className="h-40 w-full overflow-hidden object-cover object-top border-b-2 border-gray-100 dark:border-none"
-        />
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            width={500}
+            height={300}
+            className="h-40 w-full overflow-hidden object-cover object-top border-b-2 border-gray-100 dark:border-none"
+          />
+        )}
       </Link>
       <CardHeader className="px-3">
         <div className="space-y-1">
@@ -101,26 +116,22 @@ export function ProjectCard({
               <ShinyButton
                 href={href ?? ""}
                 px={"2"}
-                icon={theme === "dark" ? SiteLinkLight : SitelinkIcon}
+                icon={currentTheme === "dark" ? SiteLinkLight : SitelinkIcon}
               />
-              {mediaItems.length > 0 ? (
+              {mediaItems.length > 0 && (
                 <GalleryModal mediaItems={mediaItems} ModalTitle={title} />
-              ) : (
-                <></>
               )}
-              <a className="pt-1.5 dark:pt-0.5" href={links?.href}>
-                <Image
-                  src={
-                    theme === "dark"
-                      ? (GithubIconLight as StaticImageData)
-                      : (GithubIcon as StaticImageData)
-                  }
-                  alt="Project Github URL"
-                  height={theme === "dark" ? 33 : 24}
-                  width={theme === "dark" ? 33 : 24}
-                  className="opacity-40 text-red-100 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                />
-              </a>
+              {links?.href && (
+                <a className="pt-1.5" href={links.href}>
+                  <Image
+                    src={currentTheme === "dark" ? GithubIconLight : GithubIcon}
+                    alt="Project Github URL"
+                    height={24}
+                    width={24}
+                    className="opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                  />
+                </a>
+              )}
             </div>
           </div>
           <Markdown className="prose max-w-full text-pretty text-sm text-muted-foreground dark:prose-invert">
@@ -131,16 +142,18 @@ export function ProjectCard({
       <CardContent className="mt-auto flex flex-col px-2">
         {technologies && technologies.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {technologies?.map((tag, index) => (
+            {technologies.map((tech, index) => (
               <div
                 className="flex items-center px-1 py-0 text-[12px]"
                 key={index}
               >
                 <Image
-                  src={tag.icon}
-                  alt={tag.name}
-                  width={tag.w}
-                  height={tag.h}
+                  src={
+                    currentTheme === "dark" ? tech.icon.dark : tech.icon.light
+                  }
+                  alt={tech.name}
+                  width={tech.w}
+                  height={tech.h}
                   className="mr-1"
                 />
               </div>

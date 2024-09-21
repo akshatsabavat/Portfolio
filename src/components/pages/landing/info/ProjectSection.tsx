@@ -1,12 +1,17 @@
+"use client";
+
 import { ProjectCard } from "@/components/custom/ProjectCard";
 import { StaticImageData } from "next/image";
+import { useTheme } from "next-themes"; // Import useTheme from next-themes
 
 import BlurFade from "@/components/magicui/blur-fade";
 
 import NextJSIcon from "@/app/images/Icons/NextJSIcon.svg";
+import NextJSIconLight from "@/app/images/Icons/NextJSIconLight.svg";
 import TypeScriptIcon from "@/app/images/Icons/TypeScriptIcon.svg";
 import GeminiIcon from "@/app/images/Icons/GeminiIcon.svg";
 import OpenAIIcon from "@/app/images/Icons/OpenAIIcon.svg";
+import OpenAIIconLight from "@/app/images/Icons/OpenAIIconLight.svg";
 import CloudflareIcon from "@/app/images/Icons/CloudflareIcon.svg";
 import PostgreSQLIcon from "@/app/images/Icons/PGIcon.svg";
 import SupabaseIcon from "@/app/images/Icons/SupabaseIcon.svg";
@@ -14,9 +19,13 @@ import SanityIcon from "@/app/images/Icons/SanityIcon.svg";
 import TRPCIcon from "@/app/images/Icons/TRPCIcon.svg";
 import AssemblyAIIcon from "@/app/images/Icons/AssemblyIcon.png";
 import ExpressIcon from "@/app/images/Icons/ExpressIconm.svg";
+import ExpressIconLight from "@/app/images/Icons/ExpressIconLight.svg";
 import PrismaIcon from "@/app/images/Icons/PrismaIcon.svg";
+import PrismaIconLight from "@/app/images/Icons/PrismaIconLight.svg";
 import JavascriptIcon from "@/app/images/Icons/JavascriptIcon.svg";
 import RemixIcon from "@/app/images/Icons/RemixIcon.svg";
+import RemixIconLight from "@/app/images/Icons/RemixIconLight.svg";
+
 import FigmaIcon from "@/app/images/Icons/FigmaIcon.svg";
 
 import SnuXplore from "@/app/images/projects/Explorance.png";
@@ -26,7 +35,10 @@ import ExploranceTeam from "@/app/images/projects/TeamPicture_Explorance.jpg";
 
 interface Technology {
   name: string;
-  icon: string | StaticImageData;
+  icon: {
+    light: StaticImageData;
+    dark: StaticImageData;
+  };
   h: number;
   w: number;
 }
@@ -76,15 +88,60 @@ const DATA: ProjectData = {
       description:
         "A Tech demo powered by OpenAI & Gemini developed for Omnipresent technologies showcasing the use of LLM products in creating a browser based touring experience",
       technologies: [
-        { name: "Next.js", icon: NextJSIcon, h: 25, w: 25 },
-        { name: "Typescript", icon: TypeScriptIcon, h: 25, w: 25 },
-        { name: "TRPC", icon: TRPCIcon, h: 25, w: 25 },
-        { name: "Supabase", icon: SupabaseIcon, h: 25, w: 25 },
-        { name: "PostgreSQL", icon: PostgreSQLIcon, h: 25, w: 25 },
-        { name: "Cloudflare", icon: CloudflareIcon, h: 25, w: 25 },
-        { name: "Gemini", icon: GeminiIcon, h: 45, w: 45 },
-        { name: "OpenAI", icon: OpenAIIcon, h: 25, w: 25 },
-        { name: "Assembly AI", icon: AssemblyAIIcon, h: 25, w: 25 },
+        {
+          name: "Next.js",
+          icon: { light: NextJSIcon, dark: NextJSIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Typescript",
+          icon: { light: TypeScriptIcon, dark: TypeScriptIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "TRPC",
+          icon: { light: TRPCIcon, dark: TRPCIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Supabase",
+          icon: { light: SupabaseIcon, dark: SupabaseIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "PostgreSQL",
+          icon: { light: PostgreSQLIcon, dark: PostgreSQLIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Cloudflare",
+          icon: { light: CloudflareIcon, dark: CloudflareIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Gemini",
+          icon: { light: GeminiIcon, dark: GeminiIcon },
+          h: 45,
+          w: 45,
+        },
+        {
+          name: "OpenAI",
+          icon: { light: OpenAIIcon, dark: OpenAIIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Assembly AI",
+          icon: { light: AssemblyAIIcon, dark: AssemblyAIIcon },
+          h: 25,
+          w: 25,
+        },
       ],
       links: {
         type: "Website",
@@ -142,12 +199,42 @@ const DATA: ProjectData = {
       description:
         " An online platform built to ensure new students at Shiv Nadar University have an easier time navigating campus, accessing campus resources and attending events, currently has 6500+ site users",
       technologies: [
-        { name: "Remix", icon: RemixIcon, h: 25, w: 25 },
-        { name: "Javascript", icon: JavascriptIcon, h: 25, w: 25 },
-        { name: "Prisma", icon: PrismaIcon, h: 25, w: 25 },
-        { name: "PostgreSQL", icon: PostgreSQLIcon, h: 25, w: 25 },
-        { name: "Express", icon: ExpressIcon, h: 25, w: 25 },
-        { name: "Figma", icon: FigmaIcon, h: 15, w: 15 },
+        {
+          name: "Remix",
+          icon: { light: RemixIcon, dark: RemixIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Javascript",
+          icon: { light: JavascriptIcon, dark: JavascriptIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Prisma",
+          icon: { light: PrismaIcon, dark: PrismaIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "PostgreSQL",
+          icon: { light: PostgreSQLIcon, dark: PostgreSQLIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Express",
+          icon: { light: ExpressIcon, dark: ExpressIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Figma",
+          icon: { light: FigmaIcon, dark: FigmaIcon },
+          h: 15,
+          w: 15,
+        },
       ],
       links: {
         type: "Website",
@@ -166,12 +253,42 @@ const DATA: ProjectData = {
       description:
         "A complete Ecommerce platfrom built from scratch for a client, with an admin dashboard built to review and dispatch orders made on the site via customers ",
       technologies: [
-        { name: "Next.js", icon: NextJSIcon, h: 25, w: 25 },
-        { name: "Typescript", icon: TypeScriptIcon, h: 25, w: 25 },
-        { name: "TRPC", icon: TRPCIcon, h: 25, w: 25 },
-        { name: "Supabase", icon: SupabaseIcon, h: 25, w: 25 },
-        { name: "PostgreSQL", icon: PostgreSQLIcon, h: 25, w: 25 },
-        { name: "SanityIcon", icon: SanityIcon, h: 25, w: 25 },
+        {
+          name: "Next.js",
+          icon: { light: NextJSIcon, dark: NextJSIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Typescript",
+          icon: { light: TypeScriptIcon, dark: TypeScriptIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "TRPC",
+          icon: { light: TRPCIcon, dark: TRPCIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Supabase",
+          icon: { light: SupabaseIcon, dark: SupabaseIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "PostgreSQL",
+          icon: { light: PostgreSQLIcon, dark: PostgreSQLIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "SanityIcon",
+          icon: { light: SanityIcon, dark: SanityIcon },
+          h: 25,
+          w: 25,
+        },
       ],
       links: {
         type: "Website",
@@ -188,10 +305,10 @@ const DATA: ProjectData = {
     },
   ],
 };
-
 const BLUR_FADE_DELAY = 0.04;
 
 const ProjectSection = () => {
+  const { theme } = useTheme();
   return (
     <section id="projects" className="mb-20">
       <div className="space-y-12 w-full py-12">

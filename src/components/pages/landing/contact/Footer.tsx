@@ -4,7 +4,6 @@ import GradualSpacing from "@/components/magicui/gradual-spacing";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import ShinyButton from "@/components/magicui/shiny-button";
-import MailSendIcon from "@/app/images/Icons/MailSendIcon.svg";
 
 export default function Footer() {
   const [name, setName] = useState("");
@@ -80,7 +79,6 @@ export default function Footer() {
             <ShinyButton
               iconH={25}
               iconW={25}
-              icon={MailSendIcon}
               text={isSubmitting ? "Submitting" : "Send message"}
               className="text-black"
               onClick={handleSubmit}
