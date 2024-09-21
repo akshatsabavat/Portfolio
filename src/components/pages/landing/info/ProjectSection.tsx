@@ -2,7 +2,6 @@
 
 import { ProjectCard } from "@/components/custom/ProjectCard";
 import { StaticImageData } from "next/image";
-import { useTheme } from "next-themes"; // Import useTheme from next-themes
 
 import BlurFade from "@/components/magicui/blur-fade";
 
@@ -308,7 +307,6 @@ const DATA: ProjectData = {
 const BLUR_FADE_DELAY = 0.04;
 
 const ProjectSection = () => {
-  const { theme } = useTheme();
   return (
     <section id="projects" className="mb-20">
       <div className="space-y-12 w-full py-12">
@@ -318,7 +316,7 @@ const ProjectSection = () => {
               <h2 className="tracking-tight font-[family-name:var(--font-geist-sans)] font-bold text-4xl">
                 Projects I&apos;ve worked on
               </h2>
-              <p className="max-w-[600px] leading-6">
+              <p className="max-w-[600px] leading-6 dark:text-gray-400">
                 Take a look at some of my projects that I was fortunate enough
                 to build and collaborate with an awesome team
               </p>

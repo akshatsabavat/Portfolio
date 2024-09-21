@@ -50,7 +50,9 @@ export default function Footer() {
           className="font-display text-center text-3xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-6xl md:leading-[5rem]"
           text="Like what you see ?"
         />
-        <p className="mb-6">Let's talk and get this going !</p>
+        <p className="mb-6 dark:text-gray-400">
+          Let&apos;s talk and get this going
+        </p>
         <div className="w-full max-w-md space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <Input
