@@ -193,7 +193,7 @@ const DATA: ProjectData = {
     {
       title: "SnuXplore",
       href: "https://www.snuxplore.com/",
-      dates: "June 2024 - July 2024",
+      dates: "July 2022 - Sept 2022",
       active: true,
       description:
         " An online platform built to ensure new students at Shiv Nadar University have an easier time navigating campus, accessing campus resources and attending events, currently has 6500+ site users",

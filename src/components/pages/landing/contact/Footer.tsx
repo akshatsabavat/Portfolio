@@ -44,7 +44,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="pt-6 md:pt-8 pb-40 font-[family-name:var(--font-geist-sans)]">
+    <section
+      id="contact"
+      className="pt-6 md:pt-8 pb-40 font-[family-name:var(--font-geist-sans)]"
+    >
       <div className="flex flex-col items-center">
         <GradualSpacing
           className="font-display text-center text-3xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-6xl md:leading-[5rem]"
@@ -96,6 +99,6 @@ export default function Footer() {
           )}
         </div>
       </div>
-    </footer>
+    </section>
   );
 }

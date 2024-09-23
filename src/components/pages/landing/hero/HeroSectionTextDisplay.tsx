@@ -22,8 +22,8 @@ const HeroSection = () => {
     setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
-  const scrollToProjects = () => {
-    const projectsSection = document.getElementById("projects");
+  const scrollToProjects = (sectionId: string) => {
+    const projectsSection = document.getElementById(sectionId);
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: "smooth" });
     }
@@ -68,8 +68,13 @@ const HeroSection = () => {
             className="max-w-[400px] mx-auto dark:text-gray-400"
           />
           <div className="mt-3 flex gap-3 max-w-[500px] mx-auto justify-center items-center flex-gap-2">
-            <Button>Contact me</Button>
-            <ShinyButton onClick={scrollToProjects} text="See my work" />
+            <Button onClick={() => scrollToProjects("contact")}>
+              Contact me
+            </Button>
+            <ShinyButton
+              onClick={() => scrollToProjects("projects")}
+              text="See my work"
+            />
           </div>
         </div>
       </div>
