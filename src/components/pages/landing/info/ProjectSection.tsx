@@ -24,6 +24,8 @@ import PrismaIconLight from "@/app/images/Icons/PrismaIconLight.svg";
 import JavascriptIcon from "@/app/images/Icons/JavascriptIcon.svg";
 import RemixIcon from "@/app/images/Icons/RemixIcon.svg";
 import RemixIconLight from "@/app/images/Icons/RemixIconLight.svg";
+import ElasticSearchIcon from "@/app/images/Icons/elasticsearch-icon.svg";
+import HuggingFaceIcon from "@/app/images/Icons/HuggingFaceIcon.svg";
 
 import FigmaIcon from "@/app/images/Icons/FigmaIcon.svg";
 
@@ -330,27 +332,21 @@ const DATA: ProjectData = {
           w: 25,
         },
         {
-          name: "Supabase",
-          icon: { light: SupabaseIcon, dark: SupabaseIcon },
+          name: "Elastic Search",
+          icon: { light: ElasticSearchIcon, dark: ElasticSearchIcon },
           h: 25,
           w: 25,
         },
         {
-          name: "PostgreSQL",
-          icon: { light: PostgreSQLIcon, dark: PostgreSQLIcon },
-          h: 25,
-          w: 25,
-        },
-        {
-          name: "SanityIcon",
-          icon: { light: SanityIcon, dark: SanityIcon },
+          name: "Hugging Face",
+          icon: { light: HuggingFaceIcon, dark: HuggingFaceIcon },
           h: 25,
           w: 25,
         },
       ],
       links: {
         type: "Website",
-        href: "https://github.com/akshatsabavat/Indibliss-ecommerce-client",
+        href: "https://github.com/orgs/INFSCI-Project/repositories",
       },
       mediaItems: [
         {
