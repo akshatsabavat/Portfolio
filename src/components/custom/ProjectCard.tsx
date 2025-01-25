@@ -113,11 +113,15 @@ export function ProjectCard({
               <time className="text-xs">{dates}</time>
             </div>
             <div className="flex flex-row gap-2">
-              <ShinyButton
-                href={href ?? ""}
-                px={"2"}
-                icon={currentTheme === "dark" ? SiteLinkLight : SitelinkIcon}
-              />
+              {href === "" ? (
+                <></>
+              ) : (
+                <ShinyButton
+                  href={href ?? ""}
+                  px={"2"}
+                  icon={currentTheme === "dark" ? SiteLinkLight : SitelinkIcon}
+                />
+              )}
               {mediaItems.length > 0 && (
                 <GalleryModal mediaItems={mediaItems} ModalTitle={title} />
               )}

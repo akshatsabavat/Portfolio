@@ -30,6 +30,7 @@ import FigmaIcon from "@/app/images/Icons/FigmaIcon.svg";
 import SnuXplore from "@/app/images/projects/Explorance.png";
 import Explorance from "@/app/images/projects/SnuXplore.png";
 import Indibliss from "@/app/images/projects/Indibliss.png";
+import PubMed from "@/app/images/projects/PubMed.png";
 import ExploranceTeam from "@/app/images/projects/TeamPicture_Explorance.jpg";
 
 interface Technology {
@@ -246,7 +247,7 @@ const DATA: ProjectData = {
     },
     {
       title: "Indibliss Ecommerce",
-      href: "https://indibliss-ecommerce-client.vercel.app/",
+      href: "https://www.indiblissnaturals.com/",
       dates: "June 2024 - July 2024",
       active: true,
       description:
@@ -299,6 +300,83 @@ const DATA: ProjectData = {
       },
       mediaItems: [],
       image: Indibliss,
+      video:
+        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+    },
+    {
+      title: "PubMed Search Engine",
+      href: "",
+      dates: "Nov 2024 - Dec 2024",
+      active: true,
+      description:
+        "A group project for Information Storage & Retrieval, the search engine was designed for biomedical researchers and students as a modern alternative to PubMed's traditional Boolean searches",
+      technologies: [
+        {
+          name: "Next.js",
+          icon: { light: NextJSIcon, dark: NextJSIconLight },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Typescript",
+          icon: { light: TypeScriptIcon, dark: TypeScriptIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "TRPC",
+          icon: { light: TRPCIcon, dark: TRPCIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "Supabase",
+          icon: { light: SupabaseIcon, dark: SupabaseIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "PostgreSQL",
+          icon: { light: PostgreSQLIcon, dark: PostgreSQLIcon },
+          h: 25,
+          w: 25,
+        },
+        {
+          name: "SanityIcon",
+          icon: { light: SanityIcon, dark: SanityIcon },
+          h: 25,
+          w: 25,
+        },
+      ],
+      links: {
+        type: "Website",
+        href: "https://github.com/akshatsabavat/Indibliss-ecommerce-client",
+      },
+      mediaItems: [
+        {
+          type: "video",
+          src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/pubmed_demo.mp4",
+          thumbnail: "/placeholder.svg?height=100&width=100",
+          alt: "Project 2 Video",
+          description: {
+            title: "Search Engine Demo",
+            content:
+              "The demo of the PubMed search Engine, showcasing the search functionality , filter functions while also showing the time to index documents and how the elastic search runs in the background",
+          },
+        },
+        {
+          type: "video",
+          src: "https://pub-47e138e02b44477f9935d1b35c47d5a7.r2.dev/api_video.mp4",
+          thumbnail: "/placeholder.svg?height=100&width=100",
+          alt: "Project 2 Video",
+          description: {
+            title: "Backend API Demo",
+            content:
+              "The demo of the backend API, explained by my project partner Nick showcasing how we designed our API to be efficient and fast, while also using Elastic Search to index all our retrieved documents",
+          },
+        },
+      ],
+      image: PubMed,
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
