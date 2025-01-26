@@ -26,6 +26,7 @@ import RemixIcon from "@/app/images/Icons/RemixIcon.svg";
 import RemixIconLight from "@/app/images/Icons/RemixIconLight.svg";
 import ElasticSearchIcon from "@/app/images/Icons/elasticsearch-icon.svg";
 import HuggingFaceIcon from "@/app/images/Icons/HuggingFaceIcon.svg";
+import PythonIcon from "@/app/images/Icons/PythonIcon.svg";
 
 import FigmaIcon from "@/app/images/Icons/FigmaIcon.svg";
 
@@ -326,8 +327,8 @@ const DATA: ProjectData = {
           w: 25,
         },
         {
-          name: "TRPC",
-          icon: { light: TRPCIcon, dark: TRPCIcon },
+          name: "Python",
+          icon: { light: PythonIcon, dark: PythonIcon },
           h: 25,
           w: 25,
         },
