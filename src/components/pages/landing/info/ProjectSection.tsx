@@ -297,10 +297,7 @@ const DATA: ProjectData = {
         type: "Website",
         href: "https://github.com/akshatsabavat/Indibliss-ecommerce-client",
       },
-      indicator: {
-        show: true,
-        text: "Demo version: site under devops maintainance",
-      },
+
       mediaItems: [],
       image: Indibliss,
       video:
